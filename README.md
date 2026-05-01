@@ -15,7 +15,7 @@ Ultimate FC Mobile hub for player reviews, pack openings, market tips, and commu
 This website is hosted via GitHub Pages. After uploading the files, go to the repository Settings → Pages and deploy from the main branch.
 
 ## Author
-Your Name or Team Name
+vanshtomar
 
 ## License
 (Optional)
