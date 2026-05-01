@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TERMINATOR FCM</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial;
+  background: #0a0a0f;
+  color: white;
+  text-align: center;
+}
+
+/* HEADER */
+header {
+  padding: 15px;
+  background: #0f0f1a;
+  box-shadow: 0 0 10px cyan;
+}
+header h1 { color: cyan; }
+
+/* SECTION */
+.section { padding: 30px; }
+h2 { color: cyan; }
+
+/* CARDS */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
+  gap: 20px;
+}
+
+.card {
+  background: linear-gradient(145deg, gold, orange);
+  color: black;
+  border-radius: 15px;
+  padding: 10px;
+}
+.card img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+/* BUTTON */
+.button {
+  padding: 12px 20px;
+  background: cyan;
+  color: black;
+  border-radius: 10px;
+  margin: 10px;
+  display: inline-block;
+  cursor: pointer;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* PACK */
+#pack {
+  width: 150px;
+  height: 200px;
+  background: gold;
+  margin: 20px auto;
+  border-radius: 10px;
+  display: none;
+  animation: shake 0.4s infinite;
+}
+
+@keyframes shake {
+  0% {transform: rotate(-3deg);}
+  50% {transform: rotate(3deg);}
+  100% {transform: rotate(-3deg);}
+}
+
+/* FLASH */
+#flash {
+  position: fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:white;
+  opacity:0;
+}
+.flash {
+  animation: flashAnim 0.5s;
+}
+@keyframes flashAnim {
+  0% {opacity:1;}
+  100% {opacity:0;}
+}
+
+/* RESULT */
+#result {
+  display: none;
+}
+#result img {
+  width: 200px;
+  margin-top: 10px;
+}
+
+/* FOOTER */
+footer {
+  padding: 20px;
+  background: #0f0f1a;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>⚡ TERMINATOR FCM</h1>
+</header>
+
+<!-- HERO -->
+<section class="section">
+  <h2>Ultimate FC Mobile Hub 🔥</h2>
+</section>
+
+<!-- PLAYERS -->
+<section class="section">
+  <h2>🔥 Top Players</h2>
+  <div class="cards">
+
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/8/8c/Kylian_Mbappé_2019.jpg">
+      <h3>Mbappe</h3>
+    </div>
+
+    <div class="card">
+      <img src="ronaldo119.png">
+      <h3>Ronaldo 119</h3>
+    </div>
+
+  </div>
+</section>
+
+<!-- INVESTMENTS -->
+<section class="section">
+  <h2>📈 Investments</h2>
+  <p>Buy before hype • Sell at peak • Follow market trends</p>
+</section>
+
+<!-- EVENTS -->
+<section class="section">
+  <h2>🎮 Event Guide</h2>
+  <p>Grind daily • Save tokens • Focus on best rewards</p>
+</section>
+
+<!-- PACK -->
+<section class="section">
+  <h2>🎁 Pack Opening</h2>
+
+  <div class="button" onclick="openPack()">Open Pack</div>
+
+  <div id="pack"></div>
+
+  <div id="result">
+    <h2 id="name"></h2>
+    <img id="img">
+    <p id="info"></p>
+  </div>
+</section>
+
+<!-- SOCIAL -->
+<section class="section">
+  <h2>💬 Follow & Join</h2>
+
+  <a href="https://youtube.com/@terminatoreafc27?si=yQjGkr2s3iuUH-Jy" class="button" target="_blank">YouTube</a>
+
+  <a href="https://x.com/Tomar273" class="button" target="_blank">X</a>
+
+  <a href="https://discord.gg/UeAEEtEKu" class="button" target="_blank">Discord</a>
+
+</section>
+
+<footer>
+  © 2026 TERMINATOR FCM
+</footer>
+
+<div id="flash"></div>
+
+<script>
+function openPack() {
+
+  let pack = document.getElementById("pack");
+  let result = document.getElementById("result");
+  let flash = document.getElementById("flash");
+
+  // RESET
+  pack.style.display = "block";
+  result.style.display = "none";
+  flash.classList.remove("flash");
+
+  let players = [
+    {name:"Mbappe", img:"https://upload.wikimedia.org/wikipedia/commons/8/8c/Kylian_Mbappé_2019.jpg", rating:98},
+    {name:"Ronaldo", img:"ronaldo119.png", rating:119}
+  ];
+
+  let p = players[Math.floor(Math.random()*players.length)];
+
+  setTimeout(() => {
+
+    flash.classList.add("flash");
+
+    setTimeout(() => {
+
+      pack.style.display = "none";
+      result.style.display = "block";
+
+      document.getElementById("name").innerText = p.name;
+      document.getElementById("img").src = p.img;
+      document.getElementById("info").innerText = "OVR " + p.rating;
+
+    }, 300);
+
+  }, 2000);
+}
+</script>
+
+</body>
+</html>
